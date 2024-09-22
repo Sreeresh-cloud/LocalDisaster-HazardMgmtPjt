@@ -1,11 +1,13 @@
 html, body {
     height: 100%; 
     padding: 0;
+    margin: 0;
 }
+
 .login-page {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: space-between;
     min-height: 100vh; 
     font-family: Arial, sans-serif;
 }
@@ -37,8 +39,9 @@ html, body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
-    margin-bottom: 40px; 
-    margin-left: 600px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto; /* Center the box on larger screens */
 }
 
 .login-box h2 {
@@ -58,7 +61,7 @@ html, body {
 
 input[type="text"],
 input[type="password"] {
-    width: 95%;
+    width: 95%; 
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -85,12 +88,39 @@ input[type="password"] {
 }
 
 .login-footer {
-    margin-top: auto; 
+    margin-top: auto;
     text-align: center;
     background-color: #777;
     width: 100%;
     padding: 10px;
     font-size: 0.9em;
-    color:  #f0f0f0;
+    color: #f0f0f0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .login-box {
+        width: 80%; /* Make the login box wider for smaller screens */
+        margin-bottom: 30px;
+    }
+
+    .login-header h1 {
+        font-size: 1.8em; /* Slightly reduce header size on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-header h1 {
+        font-size: 1.5em; /* Reduce header font size further for mobile phones */
+    }
+
+    .login-box {
+        width: 90%; /* Adjust width for mobile screens */
+        padding: 15px; /* Reduce padding */
+    }
+
+    .login-button {
+        padding: 8px; /* Reduce button padding for smaller screens */
+    }
 }
