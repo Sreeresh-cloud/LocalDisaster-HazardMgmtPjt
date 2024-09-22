@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {auth} from './firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import './Login.css';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const adminCredentials = {
-    username: 'admin',
-    password: 'admin@123',
-  };
 
-  const handleLogin = (e) => {
+  const handleLogin =async (e) => {
     e.preventDefault();
     
-    if (username === adminCredentials.username && password === adminCredentials.password) {
-      setError('');
-      navigate('/home');
-    } else {
-      setError('Invalid username or password');
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      setError(''); // Clear any previous error
+      navigate('/home'); // Redirect to home on success
+    } catch (error) {
+      setError('Invalid email or password'); // Set error message
     }
   };
 
@@ -30,7 +29,7 @@ const Login = () => {
       <header className="login-header">
         <h1>Local Hazard & Disaster Management System</h1>
         <p>For Panchayat Administration Only</p>
-        <p>Panchayat: <strong>Kollam Panchayat</strong></p>
+        <p>Panchayat: <strong>Karikode Panchayat</strong></p>
         <p>Administrator: <strong>Panchayat Officer</strong></p>
       </header>
 
@@ -38,10 +37,10 @@ const Login = () => {
         <h2>Admin Login</h2>
         <form onSubmit={handleLogin}>
           <div className="input-group">
-            <label>Username:</label>
+            <label>Email:</label>
             <input
-              type="text"
-              value={username}
+              type="email"
+              value={email}
               onChange={(e) => setUsername(e.target.value)}
               required
             />

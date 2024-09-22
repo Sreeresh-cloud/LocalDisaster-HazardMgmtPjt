@@ -1,0 +1,17 @@
+
+.carousel {
+    width: 100%; /* Adjust as needed */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Positioning context */
+  }
+  
+  .carousel-container {
+    display: flex; /* Flexbox to arrange images in a row */
+    transition: transform 0.5s ease; /* Smooth transition */
+  }
+  
+  .carousel img {
+    width: 100%; /* Adjust to fit your needs */
+    max-width: 100%; /* Ensure images are responsive */
+    height: auto; /* Maintain aspect ratio */
+  }
