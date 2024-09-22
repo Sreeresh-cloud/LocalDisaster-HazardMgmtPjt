@@ -11,7 +11,7 @@ const Login = () => {
 
   const adminCredentials = {
     username: 'admin',
-    password: 'admin123',
+    password: 'admin@123',
   };
 
   const handleLogin = (e) => {
